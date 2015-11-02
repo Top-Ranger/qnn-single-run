@@ -71,7 +71,7 @@
       <item row="1" column="0" rowspan="2">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Output neuron</string>
+         <string>Output neuron:</string>
         </property>
        </widget>
       </item>
