@@ -1,0 +1,11 @@
+qnn-single-run
+   by Marcus Soll
+
+-------------------------------------------------------------------------------
+
+qnn-run-analyser is a simple tool to run a single simulation of 
+QNeuralNetworks. It was created to extract the output of the neurons for a given
+gene / simulation.
+
+qnn-single-run is licensed under the terms of the GNU General Public License
+Version 3 or (at your option) any later version.
