@@ -25,6 +25,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QFileDialog>
+#include <QTime>
 
 // NN
 #include <network/abstractneuralnetwork.h>
@@ -49,6 +50,7 @@ QnnSingleRun::QnnSingleRun(QWidget *parent) :
     _nn_model(NULL),
     _sim_model(NULL)
 {
+    qsrand(QTime::currentTime().msecsTo(QTime(0,0,0)));
     ui->setupUi(this);
 
     _nn_model = new QStringListModel(this);
@@ -152,7 +154,7 @@ void QnnSingleRun::on_pushButton_clicked()
     {
         TMazeSimulation::config config;
         config.trials = 1;
-        simulation = new TMazeSimulation();
+        simulation = new TMazeSimulation(config);
     }
     else if(selection == "TMazeSimulation (huge)")
     {
@@ -167,7 +169,7 @@ void QnnSingleRun::on_pushButton_clicked()
         ReberGrammarSimulation::config config;
         config.trials_create = 1;
         config.trials_detect = 1;
-        simulation = new ReberGrammarSimulation();
+        simulation = new ReberGrammarSimulation(config);
     }
     else if(selection == "ReberGrammarSimulation (CreateWords)")
     {
