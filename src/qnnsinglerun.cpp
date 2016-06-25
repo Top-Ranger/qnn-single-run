@@ -39,7 +39,7 @@
 #include <network/lengthchanginggene.h>
 
 // SIM
-#include <simulation/genericsimulation.h>
+#include <simulation/abstractsimulation.h>
 #include <simulation/tmazesimulation.h>
 #include <simulation/rebergrammarsimulation.h>
 
@@ -75,7 +75,6 @@ QnnSingleRun::QnnSingleRun(QWidget *parent) :
     _nn_model->setStringList(nn);
 
     QStringList sim;
-    sim << "GenericSimulation";
     sim << "TMazeSimulation";
     sim << "TMazeSimulation (huge)";
     sim << "ReberGrammarSimulation (DetectGrammar)";
@@ -94,7 +93,7 @@ QnnSingleRun::~QnnSingleRun()
 void QnnSingleRun::on_pushButton_clicked()
 {
     AbstractNeuralNetwork *network = NULL;
-    GenericSimulation *simulation = NULL;
+    AbstractSimulation *simulation = NULL;
     GenericGene *gene;
 
     bool file_neuron = ui->lineEdit_neuron->text() != "";
@@ -145,11 +144,7 @@ void QnnSingleRun::on_pushButton_clicked()
 
     // parse SIM
     selection = ui->simView->currentIndex().data().toString();
-    if(selection == "GenericSimulation")
-    {
-        simulation = new GenericSimulation();
-    }
-    else if(selection == "TMazeSimulation")
+    if(selection == "TMazeSimulation")
     {
         TMazeSimulation::config config;
         config.trials = 1;
